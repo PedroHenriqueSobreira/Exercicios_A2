@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+void strdel(char s[], int p) {
+    int i = 0;
+    int j = 0;
+
+    if (p < 0 || s[p] == '\0') {
+        return;
+    }
+
+    while (i < p && s[i] != '\0') {
+        i++;
+    }
+
+    if (s[i] != '\0') {
+
+        while (s[i + 1] != '\0') {
+            s[i] = s[i + 1];
+            i++;
+        }
+
+        s[i] = '\0';
+    }
+}
+
+int main() {
+    char string[] = "abcdef";
+    int posicao = 2;
+
+    printf("String original: %s\n", string);
+    printf("Posicao a ser deletada: %d\n", posicao);
+
+    strdel(string, posicao);
+
+    printf("String resultante: %s\n", string);
+
+    return 0;
+}
