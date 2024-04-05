@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+struct Horario {
+    int hora;
+    int minutos;
+    int segundos;
+};
+
+int main() {
+    struct Horario horario = {12, 30, 45}; // Exemplo de horário: 12 horas, 30 minutos, 45 segundos
+
+    printf("Horário: %02d:%02d:%02d\n", horario.hora, horario.minutos, horario.segundos);
+
+    return 0;
+}
