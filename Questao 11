@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+struct PESSOA {
+    char nome[50];
+    char telefone[15];
+};
+
+void preencherAgenda(struct PESSOA agenda[], int tamanho) {
+    int i;
+
+    printf("Preenchendo a agenda com os dados de 5 pessoas:\n");
+    for (i = 0; i < tamanho; i++) {
+        printf("Pessoa %d:\n", i + 1);
+        printf("Nome: ");
+        scanf("%s", agenda[i].nome); // Não usamos fgets para evitar capturar espaços em branco
+        printf("Telefone: ");
+        scanf("%s", agenda[i].telefone); // Não usamos fgets para evitar capturar espaços em branco
+    }
+}
+
+void buscarTelefone(struct PESSOA agenda[], int tamanho, char nomeBuscado[]) {
+    int i;
+    int encontrado = 0;
+
+    for (i = 0; i < tamanho; i++) {
+        if (strcmp(agenda[i].nome, nomeBuscado) == 0) {
+            printf("Telefone de %s: %s\n", nomeBuscado, agenda[i].telefone);
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Pessoa não encontrada na agenda.\n");
+    }
+}
+
+int main() {
+    struct PESSOA agenda[5];
+    char nomeBuscado[50];
+
+    preencherAgenda(agenda, 5);
+
+    printf("\nDigite o nome da pessoa para buscar o telefone: ");
+    scanf("%s", nomeBuscado);
+    buscarTelefone(agenda, 5, nomeBuscado);
+
+    return 0;
+}
