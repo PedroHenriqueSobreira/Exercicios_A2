@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void strins(char s[], char c, int p) {
+    int i = 0, length = 0;
+
+    while (s[length] != '\0') {
+        length++;
+    }
+
+    if (p >= length) {
+        s[length] = c;
+        s[length + 1] = '\0'; // Adiciona o terminador nulo
+    } else {
+
+        for (i = length; i >= p; i--) {
+            s[i + 1] = s[i];
+        }
+
+        s[p] = c;
+    }
+}
+
+int main() {
+    char string[20] = "abcdef";
+    char caractere = 'x';
+    int posicao = 2;
+
+    printf("String original: %s\n", string);
+    printf("Caractere a ser inserido: %c\n", caractere);
+    printf("Posicao de insercao: %d\n", posicao);
+
+    strins(string, caractere, posicao);
+
+    printf("String resultante: %s\n", string);
+
+    return 0;
+}
